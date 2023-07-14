@@ -1,8 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import {
+  GitHubDispatchContext,
+  GitHubStateContext,
+} from '../context/GitHubContext';
 
 const useInfiniteScroll = () => {
-  // page는 context로 관리한다고 했기 때문에 적용하실때 context로 page값 불러와서 적용해주세요
-  const [page, setPage] = useState(1);
+  const { page } = useContext(GitHubStateContext);
+  const dispatch = useContext(GitHubDispatchContext);
 
   const target = useRef(null);
 
@@ -15,14 +19,12 @@ const useInfiniteScroll = () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // page는 context로 관리한다고 했기 때문에 적용하실때 context로 page값 불러와서 적용해주세요
-        setPage((prevPageNumber) => prevPageNumber + 1);
+        dispatch({ type: 'INCREMENT_PAGE' });
       }
     });
   }, options);
 
   useEffect(() => {
-
     if (target.current) {
       observer.observe(target.current);
     }
