@@ -9,7 +9,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["simple-import-sort", "unused-imports", "react"],
+  "plugins": ["simple-import-sort", "react"],
   "rules": {
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
