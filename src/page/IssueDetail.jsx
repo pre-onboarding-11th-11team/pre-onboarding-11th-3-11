@@ -1,7 +1,10 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const IssueDetail = () => {
-  return <div>IssueDetail</div>;
+  const { state: issue } = useLocation();
+
+  return <div>{issue.body}</div>;
 };
 
 export default IssueDetail;
