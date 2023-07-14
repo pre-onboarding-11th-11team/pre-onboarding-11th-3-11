@@ -28,6 +28,7 @@ const Issues = () => {
         </>
       ))}
       {loading ? <Loading /> : undefined}
+      <div ref={target}></div>
     </>
   );
 };
