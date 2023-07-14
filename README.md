@@ -2,7 +2,7 @@
 
 > 특정 깃헙 레파지토리[(facebook/react)](https://github.com/facebook/react)의 이슈 목록과 상세 내용을 확인하는 웹 사이트 구축하고 Best Practice 선정
 
-![pre](https://github.com/eosun77/facebook-react-issue-list/assets/100937653/44f8fd72-26ff-4c61-a113-9c358c59affc)
+![infinityscroll](https://github.com/pre-onboarding-11th-11team/pre-onboarding-11th-3-11/assets/100937653/d2b18d27-6901-42e1-9a8d-3b0865f589cb)
 
 ## 목차
 
