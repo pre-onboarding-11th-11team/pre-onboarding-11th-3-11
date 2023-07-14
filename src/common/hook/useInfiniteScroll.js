@@ -1,12 +1,10 @@
 import { useContext, useEffect, useRef } from 'react';
 import { GitHubStateContext } from '../context/GitHubContext';
-import useGithubAPI from './useGitHubAPI';
 
-const useInfiniteScroll = () => {
+const useInfiniteScroll = (fetchNextPage) => {
   const target = useRef(null);
 
   const { page } = useContext(GitHubStateContext);
-  const { fetchIssues } = useGithubAPI('facebook', 'react');
 
   const options = {
     root: null,
@@ -18,7 +16,7 @@ const useInfiniteScroll = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          fetchIssues();
+          fetchNextPage();
         }
       });
     }, options);
@@ -31,7 +29,7 @@ const useInfiniteScroll = () => {
         observer.unobserve(target.current);
       }
     };
-  }, [target, fetchIssues]);
+  }, [target, fetchNextPage]);
 
   return { page, target };
 };
