@@ -4,17 +4,18 @@ import { GitHubStateContext } from '../common/context/GitHubContext';
 
 const Issues = () => {
   const { loading, error, issues } = useContext(GitHubStateContext);
-  const { fetchIssues } = useGithubAPI('facebook', 'react');
+  const { fetchInit, fetchIssues } = useGithubAPI('facebook', 'react');
 
   useEffect(() => {
+    fetchInit();
     fetchIssues();
   }, []);
-
-  console.log(issues);
 
   if (loading) return <div>Loading...</div>;
 
   if (error) return <div>Error...</div>;
+
+  console.log(issues);
 
   return <div>Issues</div>;
 };
