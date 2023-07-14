@@ -9,7 +9,7 @@ import useInfiniteScroll from '../common/hook/useInfiniteScroll';
 const Issues = () => {
   const { loading, error, issues } = useContext(GitHubStateContext);
   const { fetchInit, fetchIssues } = useGithubAPI('facebook', 'react');
-  const { page, target } = useInfiniteScroll(fetchIssues);
+  useInfiniteScroll(fetchIssues);
   useEffect(() => {
     fetchInit();
     fetchIssues();
