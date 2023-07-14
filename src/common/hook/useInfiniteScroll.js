@@ -1,10 +1,7 @@
-import { useContext, useEffect, useRef } from 'react';
-import { GitHubStateContext } from '../context/GitHubContext';
+import { useEffect, useRef } from 'react';
 
 const useInfiniteScroll = (fetchNextPage) => {
   const target = useRef(null);
-
-  const { page } = useContext(GitHubStateContext);
 
   const options = {
     root: null,
@@ -31,7 +28,7 @@ const useInfiniteScroll = (fetchNextPage) => {
     };
   }, [target, fetchNextPage]);
 
-  return { page, target };
+  return { target };
 };
 
 export default useInfiniteScroll;
