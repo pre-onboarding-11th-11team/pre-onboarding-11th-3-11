@@ -5,9 +5,10 @@ import IssueItem from '../component/Issue/IssueItem';
 
 const Issues = () => {
   const { loading, error, issues } = useContext(GitHubStateContext);
-  const { fetchIssues } = useGithubAPI('facebook', 'react');
+  const { fetchInit, fetchIssues } = useGithubAPI('facebook', 'react');
 
   useEffect(() => {
+    fetchInit();
     fetchIssues();
   }, []);
 
