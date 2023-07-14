@@ -22,7 +22,7 @@ const Issues = () => {
       {issues.map((issue, idx) => (
         <>
           <IssueItem key={idx} issue={issue} />
-          {idx % 4 === 3 && <Ad />}
+          {(idx + 1) % 4 === 0 && <Ad />}
         </>
       ))}
       {loading ? <Loading /> : undefined}
