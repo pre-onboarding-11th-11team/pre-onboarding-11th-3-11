@@ -28,11 +28,6 @@ export const gitHubReducer = (state, action) => {
         loading: false,
         page: state.page + 1,
       };
-    case 'INCREMENT_PAGE':
-      return {
-        ...state,
-        page: state.page + 1,
-      };
     case 'FETCH_ERROR':
       return {
         ...state,
