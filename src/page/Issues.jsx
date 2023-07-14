@@ -10,7 +10,7 @@ import Error from './Error';
 const Issues = () => {
   const { loading, error, issues } = useContext(GitHubStateContext);
   const { fetchInit, fetchIssues } = useGithubAPI('facebook', 'react');
-  useInfiniteScroll(fetchIssues);
+  const { target } = useInfiniteScroll(fetchIssues);
   useEffect(() => {
     fetchInit();
     fetchIssues();
@@ -29,6 +29,7 @@ const Issues = () => {
         </>
       ))}
       {loading ? <Loading /> : undefined}
+      <div ref={target}></div>
     </>
   );
 };
