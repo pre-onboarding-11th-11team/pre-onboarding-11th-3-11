@@ -8,7 +8,19 @@ const IssueItem = ({ issue }) => {
     navigate(`${issue.number}`, { state: { ...issue } });
   };
 
-  return <div onClick={handleIssueClick}>{issue.title}</div>;
+  return (
+    <div>
+      <div onClick={handleIssueClick()}>
+        <div>
+          #{issue.number} {issue.title}
+        </div>
+        <div>코멘트:{issue.comments}</div>
+      </div>
+      <div>
+        작성자:{issue.user.login}, 작성일:{issue.created_at}
+      </div>
+    </div>
+  );
 };
 
 export default IssueItem;

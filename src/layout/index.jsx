@@ -1,12 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { GitHubProvider } from '../common/context/GitHubContext';
+import Header from './Header';
 
 const Layout = () => {
   return (
-    <GitHubProvider>
+    <>
+      <Header />
       <Outlet />
-    </GitHubProvider>
+    </>
   );
 };
 
