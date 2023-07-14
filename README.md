@@ -139,8 +139,63 @@ const Issues = () => {
 - Context API와 useReducer를 사용하여 상태 관리
 - repository, issues, page, loading, error 상태 관리
 
-```
+```jsx
+// GitHubContext.jsx
 
+export const defaultGitHubState = {
+  repository: null,
+  page: 1,
+  issues: [],
+  loading: false,
+  error: null,
+};
+
+export const gitHubReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'FETCH_REPO_SUCCESS':
+      return {
+        ...state,
+        repository: action.payload,
+        loading: false,
+      };
+    case 'FETCH_ISSUES_SUCCESS':
+      return {
+        ...state,
+        issues: [...state.issues, ...action.payload],
+        loading: false,
+        page: state.page + 1,
+      };
+    case 'FETCH_ERROR':
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
+    default:
+      throw new Error(`Unhandled action type.`);
+  }
+};
+
+export const GitHubStateContext = createContext(defaultGitHubState);
+
+export const GitHubDispatchContext = createContext(undefined);
+
+export const GitHubProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(gitHubReducer, defaultGitHubState);
+
+  return (
+    <GitHubStateContext.Provider value={state}>
+      <GitHubDispatchContext.Provider value={dispatch}>
+        {children}
+      </GitHubDispatchContext.Provider>
+    </GitHubStateContext.Provider>
+  );
+};
 ```
 
 ### useGitHubAPI
@@ -148,7 +203,43 @@ const Issues = () => {
 - API를 요청하는 service 코드를 useGitHubAPI로 묶어서 관리
 
 ```jsx
+// useGitHubAPI
 
+const fetchRepository = async () => {
+  dispatch({
+    type: 'LOADING',
+  });
+  try {
+    const repositoryResponse = await githubAPI.get(`/repos/${owner}/${repo}`);
+
+    dispatch({
+      type: 'FETCH_REPO_SUCCESS',
+      payload: repositoryResponse.data,
+    });
+  } catch (error) {
+    dispatch({ type: 'FETCH_ERROR', payload: error });
+  }
+};
+
+const fetchIssues = async () => {
+  dispatch({
+    type: 'LOADING',
+  });
+  try {
+    const issuesResponse = await githubAPI.get(
+      `/repos/${owner}/${repo}/issues?sort=comments&page=${state.page}&per_page=10`,
+    );
+
+    dispatch({
+      type: 'FETCH_ISSUES_SUCCESS',
+      payload: issuesResponse.data,
+    });
+  } catch (error) {
+    dispatch({ type: 'FETCH_ERROR', payload: error });
+  }
+};
+
+return { fetchRepository, fetchIssues };
 ```
 
 ## 문서
