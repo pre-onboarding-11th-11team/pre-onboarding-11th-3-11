@@ -9,8 +9,9 @@ const IssueItem = ({ issue }) => {
   };
 
   return (
-    <div onClick={() => handleIssueClick()}>
-      <div>
+
+    <div>
+      <div onClick={handleIssueClick}>
         <div>
           #{issue.number} {issue.title}
         </div>
