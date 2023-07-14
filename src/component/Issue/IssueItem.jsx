@@ -12,7 +12,7 @@ const IssueItem = ({ issue }) => {
   return (
     <IssueItemWrapper>
       <IssueItemHeader>
-        <IssueItemTitle onClick={() => handleIssueClick}>
+        <IssueItemTitle onClick={handleIssueClick}>
           #{issue.number} {issue.title}
         </IssueItemTitle>
         <IssueItemInfo>코멘트:{issue.comments}</IssueItemInfo>

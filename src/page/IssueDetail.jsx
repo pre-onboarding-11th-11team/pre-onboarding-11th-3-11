@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import Markdown from '../util/markdown';
 import { GitHubStateContext } from '../common/context/GitHubContext';
 import Loading from '../component/Loading/Loading';
+import IssueItem from '../component/Issue/IssueItem';
+import { styled } from 'styled-components';
 
 const IssueDetail = () => {
   const { loading, error } = useContext(GitHubStateContext);
@@ -10,7 +12,26 @@ const IssueDetail = () => {
 
   if (error) return <div>Error...</div>;
 
-  return <>{loading ? <Loading /> : <Markdown content={issue.body} />}</>;
+  return (
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <IssueDetailHeader>
+            <img
+              src={issue.user.avatar_url}
+              width="78px"
+              height="78px"
+              alt="profile"
+            />
+            <IssueItem issue={issue} />
+          </IssueDetailHeader>
+          <Markdown content={issue.body} />
+        </>
+      )}
+    </>
+  );
 };
 
 export default IssueDetail;

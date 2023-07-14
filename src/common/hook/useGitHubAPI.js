@@ -12,13 +12,10 @@ const useGithubAPI = (owner, repo) => {
 
   if (dispatch === undefined) throw new Error('error');
 
-  const fetchInit = () => {
+  const fetchRepository = async () => {
     dispatch({
       type: 'LOADING',
     });
-  };
-
-  const fetchRepository = async () => {
     try {
       const repositoryResponse = await githubAPI.get(`/repos/${owner}/${repo}`);
 
@@ -32,6 +29,9 @@ const useGithubAPI = (owner, repo) => {
   };
 
   const fetchIssues = async () => {
+    dispatch({
+      type: 'LOADING',
+    });
     try {
       const issuesResponse = await githubAPI.get(
         `/repos/${owner}/${repo}/issues?sort=comments&page=${state.page}&per_page=10`,
@@ -46,7 +46,7 @@ const useGithubAPI = (owner, repo) => {
     }
   };
 
-  return { fetchInit, fetchRepository, fetchIssues };
+  return { fetchRepository, fetchIssues };
 };
 
 export default useGithubAPI;

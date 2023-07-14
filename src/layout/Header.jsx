@@ -2,29 +2,21 @@ import { useContext, useEffect } from 'react';
 import { styled } from 'styled-components';
 import { GitHubStateContext } from '../common/context/GitHubContext';
 import useGithubAPI from '../common/hook/useGitHubAPI';
-import Loading from '../component/Loading/Loading';
+import Error from '../page/Error';
 
 const Header = () => {
-  const { loading, error, repository } = useContext(GitHubStateContext);
+  const { error, repository } = useContext(GitHubStateContext);
   const { fetchRepository } = useGithubAPI('facebook', 'react');
 
   useEffect(() => {
     fetchRepository();
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   if (error) {
-    return <div>error:{error}</div>;
+    return <Error />;
   }
 
-  if (!repository) {
-    return <div>404</div>;
-  }
-
-  return <HeaderWrapper>{repository.full_name}</HeaderWrapper>;
+  return <HeaderWrapper>{repository?.full_name}</HeaderWrapper>;
 };
 
 export default Header;

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import useGithubAPI from '../common/hook/useGitHubAPI';
 import { GitHubStateContext } from '../common/context/GitHubContext';
 import IssueItem from '../component/Issue/IssueItem';
@@ -9,14 +9,8 @@ import Error from './Error';
 
 const Issues = () => {
   const { loading, error, issues } = useContext(GitHubStateContext);
-  const { fetchInit, fetchIssues } = useGithubAPI('facebook', 'react');
+  const { fetchIssues } = useGithubAPI('facebook', 'react');
   const { target } = useInfiniteScroll(fetchIssues);
-  useEffect(() => {
-    fetchInit();
-    fetchIssues();
-  }, []);
-
-  if (loading) return <Loading />;
 
   if (error) return <Error />;
 
@@ -28,8 +22,7 @@ const Issues = () => {
           {(idx + 1) % 4 === 0 && <Ad />}
         </>
       ))}
-      {loading ? <Loading /> : undefined}
-      <div ref={target}></div>
+      {loading ? <Loading /> : <div ref={target}></div>}
     </>
   );
 };
