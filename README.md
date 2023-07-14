@@ -100,6 +100,6 @@ npm start
     <td align="center" valign="top" width="25%"><a href="https://github.com/WONILLISM"><img src="https://avatars.githubusercontent.com/u/47653005?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>박원일</b><br/>팀장</sub></a><br /></td>
     <td align="center" valign="top" width="25%"><a href="https://github.com/RumbleBi"><img src="https://avatars.githubusercontent.com/u/85114315?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>조원일</b></sub></a><br /></td>
     <td align="center" valign="top" width="25%"><a href="https://github.com/mia-seo"><img src="https://avatars.githubusercontent.com/u/100937653?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>주대선</b></sub></a><br /></td>
-      <td align="center" valign="top" width="25%"><a href="https://github.com/BrightSton"><img src="https://avatars.githubusercontent.com/u/105143449?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>이지현</b></sub></a><br /></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/BrightSton"><img src="https://avatars.githubusercontent.com/u/105143449?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>이현석</b></sub></a><br /></td>
   </tr>
 </table>
