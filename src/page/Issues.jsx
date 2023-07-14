@@ -22,28 +22,15 @@ const Issues = () => {
   return (
     <>
       {issues.map((issue, idx) => (
-        <>
-          <IssueItem key={idx} issue={issue} />
+        <Fragment key={issue.id}>
+          <IssueItem issue={issue} />
           {(idx + 1) % 4 === 0 && <Ad />}
-        </>
+        </Fragment>
       ))}
       {loading ? <Loading /> : undefined}
       <div ref={target}></div>
     </>
   );
 };
-
-// import useInfiniteScroll from './useInfiniteScroll';
-
-// function IssueList() {
-//   const { page, target } = useInfiniteScroll();
-
-//   return (
-//     <div>
-//       {/* ... */}
-//       <div ref={target}>무한스크롤 트리거 요소</div>
-//     </div>
-//   );
-// }
 
 export default Issues;
