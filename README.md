@@ -71,8 +71,67 @@ npm start
 
 ### 무한 스크롤
 
-```jsx
+- useRef를 사용하여 target ref를 생성하여 페이지의 끝 부분을 가리키는 DOM 요소에 연결시킴
+- `root`, `rootMargin`, `threshold` 옵션을 사용하여 observer의 동작을 조절
+- IntersectionObserver 콜백 함수는 관찰 요소들에 대한 정보를 `IntersectionObserverEntry` 객체의 배열인 `entries` 를 인자로 받는다. 이 객체중에 `isIntersecting` 속성은 관찰 대상 요소가 보이는지 여부를 불린값으로 나타낸다. 값이 `true`이면 관찰 대상 요소가 보이고 있다는 뜻이다.
 
+```jsx
+// hook/useInfiniteScroll.js
+
+import { useEffect, useRef } from 'react';
+
+const useInfiniteScroll = (fetchNextPage) => {
+  const target = useRef(null);
+
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1.0,
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          fetchNextPage();
+        }
+      });
+    }, options);
+    if (target.current) {
+      observer.observe(target.current);
+    }
+
+    return () => {
+      if (target.current) {
+        observer.unobserve(target.current);
+      }
+    };
+  }, [target, fetchNextPage]);
+
+  return { target };
+};
+
+export default useInfiniteScroll;
+```
+
+```jsx
+// page/Issues.jsx
+
+// imports...
+
+const Issues = () => {
+  const { fetchInit, fetchIssues } = useGithubAPI('facebook', 'react');
+  const { target } = useInfiniteScroll(fetchIssues);
+
+  // code...
+
+  return (
+    <>
+      // issues...
+      <div ref={target}></div>
+    </>
+  );
+};
 ```
 
 ### Context API
