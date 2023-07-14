@@ -12,13 +12,13 @@ const IssueItem = ({ issue }) => {
   return (
     <IssueItemWrapper>
       <IssueItemHeader>
-        <IssueItemTitle onClick={handleIssueClick}>
+        <IssueItemTitle onClick={() => handleIssueClick}>
           #{issue.number} {issue.title}
         </IssueItemTitle>
-        <IssueItemInfo>코멘트: {issue.comments}</IssueItemInfo>
+        <IssueItemInfo>코멘트:{issue.comments}</IssueItemInfo>
       </IssueItemHeader>
       <IssueItemInfo>
-        작성자: {issue.userName}, 작성일: {issue.createdAt}
+        작성자:{issue.user.login}, 작성일:{issue.created_at}
       </IssueItemInfo>
     </IssueItemWrapper>
   );
