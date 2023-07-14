@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const IssueItem = ({ issue }) => {
   const navigate = useNavigate();
 
-  const handleIssueClick = () => () => {
+  const handleIssueClick = () => {
     navigate(`${issue.number}`, { state: { ...issue } });
   };
 
