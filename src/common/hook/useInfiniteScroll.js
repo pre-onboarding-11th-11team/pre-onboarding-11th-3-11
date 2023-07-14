@@ -22,6 +22,7 @@ const useInfiniteScroll = () => {
   }, options);
 
   useEffect(() => {
+
     if (target.current) {
       observer.observe(target.current);
     }
