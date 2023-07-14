@@ -9,6 +9,7 @@ const IssueItem = ({ issue }) => {
   };
 
   return (
+
     <div>
       <div onClick={handleIssueClick}>
         <div>
