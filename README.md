@@ -62,7 +62,7 @@ npm start
   - 다섯번째 셀마다 광고 이미지 출력
   - [무한 스크롤](#무한-스크롤)
 - 이슈 상세 페이지 구현
-- [Context API를 활용한 API 연동](#context-api를-활용한-api-연동)
+- [Context API](#context-api)
 - 데이터 요청 중 로딩 표시
 - 에러 화면 구현
 - 지정된 조건에 맞게 데이터 요청 및 표시
