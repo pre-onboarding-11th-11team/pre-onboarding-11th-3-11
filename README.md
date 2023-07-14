@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# 원티드 프리온보딩 인턴십 3주차 과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 특정 깃헙 레파지토리[(facebook/react)](https://github.com/facebook/react)의 이슈 목록과 상세 내용을 확인하는 웹 사이트 구축하고 Best Practice 선정
 
-## Available Scripts
+![pre](https://github.com/eosun77/facebook-react-issue-list/assets/100937653/44f8fd72-26ff-4c61-a113-9c358c59affc)
 
-In the project directory, you can run:
+## 목차
 
-### `npm start`
+- [원티드 프리온보딩 인턴십 3주차 과제](#원티드-프리온보딩-인턴십-3주차-과제)
+  - [목차](#목차)
+  - [시작하기](#시작하기)
+  - [폴더구조](#폴더구조)
+  - [구현 기능](#구현-기능)
+  - [Best Practice 선정](#best-practice-선정)
+    - [무한 스크롤](#무한-스크롤)
+    - [Context API](#context-api)
+    - [useGitHubAPI](#usegithubapi)
+  - [문서](#문서)
+  - [팀원](#팀원)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 시작하기
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+git clone https://github.com/eosun77/wanted-pre-onboarding-frontend.git
+```
 
-### `npm test`
+`.env` 파일을 `facebook-react-issue-list` 폴더에 생성합니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```.env
+REACT_APP_GITHUB_TOKEN = <your github token>
+REACT_APP_BASE_URL = "https://api.github.com/repos/facebook/react"
+```
 
-### `npm run build`
+`facebook-react-issue-list` 폴더에서 실행합니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm install
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 폴더구조
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+📦src
+  ├── 📄index.css
+  ├── 📄index.tsx
+  ├── 📄App.tsx
+  ├── 📂components
+  ├── 📂hooks
+  ├── 📂pages
+  ├── 📂routers
+  ├── 📂types
+  └── 📂utils
+```
 
-### `npm run eject`
+## 구현 기능
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 이슈 목록 페이지 구현
+  - 다섯번째 셀마다 광고 이미지 출력
+  - [무한 스크롤](#무한-스크롤)
+- 이슈 상세 페이지 구현
+- [Context API를 활용한 API 연동](#context-api를-활용한-api-연동)
+- 데이터 요청 중 로딩 표시
+- 에러 화면 구현
+- 지정된 조건에 맞게 데이터 요청 및 표시
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Best Practice 선정
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 무한 스크롤
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```jsx
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Context API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Context API와 useReducer를 사용하여 상태 관리
+- repository, issues, page, loading, error 상태 관리
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
 
-### Analyzing the Bundle Size
+### useGitHubAPI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- API를 요청하는 service 코드를 useGitHubAPI로 묶어서 관리
 
-### Making a Progressive Web App
+```jsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
 
-### Advanced Configuration
+## 문서
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [3주차 회의록](https://www.notion.so/2-c29f78be6aec418aba9ee2c1a9402e8d)
 
-### Deployment
+## 팀원
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<table>
+  <tr>
+    <td align="center" valign="top" width="25%"><a href="https://github.com/WONILLISM"><img src="https://avatars.githubusercontent.com/u/47653005?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>박원일</b><br/>팀장</sub></a><br /></td>
+    <td align="center" valign="top" width="25%"><a href="https://github.com/RumbleBi"><img src="https://avatars.githubusercontent.com/u/85114315?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>조원일</b></sub></a><br /></td>
+    <td align="center" valign="top" width="25%"><a href="https://github.com/mia-seo"><img src="https://avatars.githubusercontent.com/u/100937653?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>주대선</b></sub></a><br /></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/BrightSton"><img src="https://avatars.githubusercontent.com/u/105143449?v=4" width="100px;" alt="Mayank Badola"/><br /><sub><b>이지현</b></sub></a><br /></td>
+  </tr>
+</table>
