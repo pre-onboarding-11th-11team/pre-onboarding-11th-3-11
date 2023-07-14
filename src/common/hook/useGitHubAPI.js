@@ -12,6 +12,12 @@ const useGithubAPI = (owner, repo) => {
 
   if (dispatch === undefined) throw new Error('error');
 
+  const fetchInit = () => {
+    dispatch({
+      type: 'LOADING',
+    });
+  };
+
   const fetchRepository = async () => {
     try {
       const repositoryResponse = await githubAPI.get(`/repos/${owner}/${repo}`);
@@ -40,7 +46,7 @@ const useGithubAPI = (owner, repo) => {
     }
   };
 
-  return { fetchRepository, fetchIssues };
+  return { fetchInit, fetchRepository, fetchIssues };
 };
 
 export default useGithubAPI;

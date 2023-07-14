@@ -1,24 +1,25 @@
-import { useState, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import { GitHubStateContext } from '../context/GitHubContext';
 
-const useInfiniteScroll = () => {
-  const [page, setPage] = useState(1);
+const useInfiniteScroll = (fetchNextPage) => {
   const target = useRef(null);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 1.0,
-    };
+  const { page } = useContext(GitHubStateContext);
 
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1.0,
+  };
+
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setPage((prevPageNumber) => prevPageNumber + 1);
+          fetchNextPage();
         }
       });
     }, options);
-
     if (target.current) {
       observer.observe(target.current);
     }
@@ -28,7 +29,7 @@ const useInfiniteScroll = () => {
         observer.unobserve(target.current);
       }
     };
-  }, [target]);
+  }, [target, fetchNextPage]);
 
   return { page, target };
 };

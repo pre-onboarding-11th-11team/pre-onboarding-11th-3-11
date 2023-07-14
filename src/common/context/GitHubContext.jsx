@@ -4,12 +4,17 @@ export const defaultGitHubState = {
   repository: null,
   page: 1,
   issues: [],
-  loading: true,
+  loading: false,
   error: null,
 };
 
 export const gitHubReducer = (state, action) => {
   switch (action.type) {
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true,
+      };
     case 'FETCH_REPO_SUCCESS':
       return {
         ...state,
