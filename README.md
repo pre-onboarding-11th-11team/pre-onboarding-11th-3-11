@@ -24,14 +24,14 @@
 git clone https://github.com/eosun77/wanted-pre-onboarding-frontend.git
 ```
 
-`.env` 파일을 `facebook-react-issue-list` 폴더에 생성합니다.
+`.env` 파일을 `root` 폴더에 생성합니다.
 
 ```.env
-REACT_APP_GITHUB_TOKEN = <your github token>
-REACT_APP_BASE_URL = "https://api.github.com/repos/facebook/react"
+REACT_APP_GITHUB_ACCESS_TOKEN = <your github token>
+REACT_APP_GITHUB_API_URL = "https://api.github.com"
 ```
 
-`facebook-react-issue-list` 폴더에서 실행합니다.
+`root` 폴더에서 실행합니다.
 
 ```
 npm install
