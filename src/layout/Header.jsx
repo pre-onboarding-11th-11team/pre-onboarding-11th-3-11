@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { styled } from 'styled-components';
 import { GitHubStateContext } from '../common/context/GitHubContext';
 import useGithubAPI from '../common/hook/useGitHubAPI';
+import Loading from '../component/Loading/Loading';
 
 const Header = () => {
   const { loading, error, repository } = useContext(GitHubStateContext);
@@ -12,7 +13,7 @@ const Header = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
@@ -23,12 +24,14 @@ const Header = () => {
     return <div>404</div>;
   }
 
-  return <HeaderStyle>{repository.full_name}</HeaderStyle>;
+  return <HeaderWrapper>{repository.full_name}</HeaderWrapper>;
 };
 
-const HeaderStyle = styled.header`
-  display: flex;
-  justify-content: center;
-`;
-
 export default Header;
+
+const HeaderWrapper = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 24px;
+`;

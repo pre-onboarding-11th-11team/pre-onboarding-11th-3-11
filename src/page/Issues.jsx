@@ -5,19 +5,20 @@ import IssueItem from '../component/Issue/IssueItem';
 import Ad from '../component/Ad/Ad';
 import Loading from '../component/Loading/Loading';
 import useInfiniteScroll from '../common/hook/useInfiniteScroll';
+import Error from './Error';
 
 const Issues = () => {
   const { loading, error, issues } = useContext(GitHubStateContext);
   const { fetchInit, fetchIssues } = useGithubAPI('facebook', 'react');
-  const { page, target } = useInfiniteScroll(fetchIssues);
+  useInfiniteScroll(fetchIssues);
   useEffect(() => {
     fetchInit();
     fetchIssues();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
-  if (error) return <div>Error...</div>;
+  if (error) return <Error />;
 
   return (
     <>
