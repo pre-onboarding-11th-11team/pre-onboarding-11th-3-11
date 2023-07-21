@@ -23,7 +23,7 @@
 ## 시작하기
 
 ```
-https://github.com/pre-onboarding-11th-11team/pre-onboarding-11th-3-11.git
+git clone https://github.com/pre-onboarding-11th-11team/pre-onboarding-11th-3-11.git
 ```
 
 `.env` 파일을 `root` 폴더에 생성합니다.
